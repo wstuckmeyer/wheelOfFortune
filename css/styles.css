@@ -211,13 +211,10 @@ h1 {
   #canvasContainer #prize {
     top: 0;
     position: absolute;
-    z-index: 999;
+    z-index: 15;
     left: 45%;
     width: 50px;
     height: 50px; }
-
-#phrase {
-  float: left; }
 
 #spin, #play {
   background: #3498db;
@@ -240,5 +237,45 @@ h1 {
   background: #FFFFFF;
   margin-left: 20px;
   display: inline-block; }
+
+#hint {
+  text-align: center;
+  position: absolute; }
+
+#phrase {
+  float: left;
+  margin-top: 10%;
+  position: absolute; }
+
+#spinStuff {
+  display: none; }
+  #spinStuff #spin {
+    margin-left: 47%; }
+
+#blur {
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  background-color: #000000;
+  top: 0;
+  display: block;
+  position: fixed;
+  opacity: 0.5;
+  display: none; }
+
+#myModal {
+  color: #000000;
+  text-align: center;
+  width: 40%;
+  height: 40%;
+  position: fixed;
+  right: 30%;
+  top: 20%;
+  z-index: 10000;
+  display: none;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 40px #000000;
+  overflow: scroll; }
 
 /*# sourceMappingURL=styles.css.map */

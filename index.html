@@ -9,16 +9,14 @@
 	<container>
 		<div class='row' id='topContent'>
 			<div class='col-2' id='rules'>
-				<h1>Rules:</h1>
-				<p>1:Spin the Wheel!</p>
-				<br><p>2:Guess a letter!</p>
-				<button type='button' id='spin'>Spin</button>
+				<h1>Player:</h1>
+				<p id='winnings'>Winnings:</p>
+				<p id='amount'></p>
+				<p id='playAmount'></p>
 			</div>
 			<div class='col-10' id='gameBoard'>
 				<h1>Wheel of Fortune</h1>
 				<div id='hint'>
-				</div>
-				<div id='phrase'>
 				</div>
 				<div id='phrase'>
 					<button type='button' id='play'>Click to Play</button>
@@ -42,42 +40,51 @@
 		<div class ='row'>
 			<div class='col-12'>
 				<div class='letters'>
-					<span id='a'><img src='letters/icons8-a.png'></span>
-					<span id='b'><img src='letters/icons8-b.png'></span>
-					<span id='c'><img src='letters/icons8-c.png'></span>
-					<span id='d'><img src='letters/icons8-d.png'></span>
-					<span id='e'><img src='letters/icons8-e.png'></span>
-					<span id='f'><img src='letters/icons8-f.png'></span>
-					<span id='g'><img src='letters/icons8-g.png'></span>
-					<span id='h'><img src='letters/icons8-h.png'></span>
-					<span id='i'><img src='letters/icons8-i.png'></span>
+					<span id='A'><img src='letters/icons8-a.png'></span>
+					<span id='B'><img src='letters/icons8-b.png'></span>
+					<span id='C'><img src='letters/icons8-c.png'></span>
+					<span id='D'><img src='letters/icons8-d.png'></span>
+					<span id='E'><img src='letters/icons8-e.png'></span>
+					<span id='F'><img src='letters/icons8-f.png'></span>
+					<span id='G'><img src='letters/icons8-g.png'></span>
+					<span id='H'><img src='letters/icons8-h.png'></span>
+					<span id='I'><img src='letters/icons8-i.png'></span>
 					<br>
-					<span id='j'><img src='letters/icons8-j.png'></span>
-					<span id='k'><img src='letters/icons8-k.png'></span>
-					<span id='l'><img src='letters/icons8-l.png'></span>
-					<span id='m'><img src='letters/icons8-m.png'></span>
-					<span id='n'><img src='letters/icons8-n.png'></span>
-					<span id='o'><img src='letters/icons8-o.png'></span>
-					<span id='p'><img src='letters/icons8-p.png'></span>
-					<span id='q'><img src='letters/icons8-q.png'></span>
+					<span id='J'><img src='letters/icons8-j.png'></span>
+					<span id='K'><img src='letters/icons8-k.png'></span>
+					<span id='L'><img src='letters/icons8-l.png'></span>
+					<span id='M'><img src='letters/icons8-m.png'></span>
+					<span id='N'><img src='letters/icons8-n.png'></span>
+					<span id='O'><img src='letters/icons8-o.png'></span>
+					<span id='P'><img src='letters/icons8-p.png'></span>
+					<span id='Q'><img src='letters/icons8-q.png'></span>
 					<br>
-					<span id='r'><img src='letters/icons8-r.png'></span>
-					<span id='s'><img src='letters/icons8-s.png'></span>
-					<span id='t'><img src='letters/icons8-t.png'></span>
-					<span id='u'><img src='letters/icons8-u.png'></span>
-					<span id='v'><img src='letters/icons8-v.png'></span>
-					<span id='w'><img src='letters/icons8-w.png'></span>
-					<span id='x'><img src='letters/icons8-x.png'></span>
-					<span id='y'><img src='letters/icons8-y.png'></span>
-					<span id='z'><img src='letters/icons8-z.png'></span>
+					<span id='R'><img src='letters/icons8-r.png'></span>
+					<span id='S'><img src='letters/icons8-s.png'></span>
+					<span id='T'><img src='letters/icons8-t.png'></span>
+					<span id='U'><img src='letters/icons8-u.png'></span>
+					<span id='V'><img src='letters/icons8-v.png'></span>
+					<span id='W'><img src='letters/icons8-w.png'></span>
+					<span id='X'><img src='letters/icons8-x.png'></span>
+					<span id='Y'><img src='letters/icons8-y.png'></span>
+					<span id='Z'><img src='letters/icons8-z.png'></span>
 				</div>
 			</div>
 		</div>
 	</container>
+		<div id='spinStuff'>
+		<h1 id='spinTxt'>Spin!</h1>
+		<button type='button' id='spin'>Spin</button>
+		</div>
 	</div>
-
-
-
+	<container id='blur'>
+	</container>
+	<div id="myModal">
+		<container id="modalContent">
+			<h3 id="modalHead"></h3>
+		</container>
+		</div>
+	</div>
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"

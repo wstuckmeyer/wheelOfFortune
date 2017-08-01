@@ -17,7 +17,6 @@ $(document).ready(function(){
 //if they click solve the player doesn't have to spin again. they can keep clicking letters
 //if they click a wrong letter in solve they lose money and have to spin again and keep guessing
 
-
 //making the wheel
 var theWheel = new Winwheel({
 	'numSegments':8,
@@ -26,14 +25,14 @@ var theWheel = new Winwheel({
 	'textFontSize':17,
 	'textFontWeight':'bold',
 	'segments':[
-		{'fillStyle':'#ef0758','text':'$1,000'},
-		{'fillStyle':'#8402ef','text':'$2'},
-		{'fillStyle':'#02e83b','text':'$4,000'},
-		{'fillStyle':'#04ddf9','text':'$300'},
-		{'fillStyle':'#f5f904','text':'Cat'},
-		{'fillStyle':'#ad0855','text':'$6'},
-		{'fillStyle':'#e21309','text':'$5,000'},
-		{'fillStyle':'#FFFFFF','text':'Bankrupt'}
+		{'fillStyle':'#ef0758','text':'1,000','value':1000},
+		{'fillStyle':'#8402ef','text':'2','value':2},
+		{'fillStyle':'#02e83b','text':'4,000','value':4000},
+		{'fillStyle':'#04ddf9','text':'300','value':300},
+		{'fillStyle':'#f5f904','text':'600','value':600},
+		{'fillStyle':'#ad0855','text':'6','value':6},
+		{'fillStyle':'#e21309','text':'700','value':700},
+		{'fillStyle':'#FFFFFF','text':'Bankrupt','value':0}
 	],
 	'pins':true,
 	'animation':{
@@ -48,13 +47,25 @@ var theWheel = new Winwheel({
 //adds spin functionality
 $('#spin').click(function(){
 	theWheel.startAnimation();
+	// $('#spinStuff').css('display','none');
+	// $('#lowerContent').delay(5000).fadeIn('slow');
 })
+//gets the value of the segment the player spun
 var spinValue = ''
 function getPrize(){
 	spinValue=theWheel.getIndicatedSegment();
-	console.log(spinValue.text);
+	if(spinValue.value==0){
+		winnings = winnings*0;
+		$('#amount').text('$'+winnings)
+		startGame();
+		theWheel.rotationAngle=0
+	}else{
+	console.log(spinValue.value);
 	theWheel.rotationAngle=0
-	
+	$('#playAmount').text('This guess is worth: $'+spinValue.text)
+	$('#spinStuff').css('display','none');
+	$('#lowerContent').fadeIn('slow');
+	}	
 }
 //create object constructor for words
 function game(phrase, category){
@@ -68,9 +79,9 @@ function rounds(){
 
 rounds.prototype=Object.create(game.prototype)
 var allGames = new rounds()
-var one = new game('Avacado Toast','Brunch');
-var two = new game('I Literally Can Not', '"Can You?"');
-var three = new game('Gluten Free','"Vegan, Dairy Free, Non GMO, ..."')
+var one = new game('AVACADO TOAST','Brunch');
+var two = new game('I LITERALLY CAN NOT', '"Can You?"');
+var three = new game('GLUTEN FREE','"Vegan, Dairy Free, Non GMO, ..."')
 var phraseArray = []
 //add objects to an array
 rounds.prototype.addPhrase = function(game){
@@ -79,7 +90,7 @@ rounds.prototype.addPhrase = function(game){
 allGames.addPhrase(one);
 allGames.addPhrase(two);
 allGames.addPhrase(three);
-
+var winningNumber=0
 //pick a random phrase at random
 var newRound = allGames.rounds[Math.floor(Math.random()*allGames.rounds.length)]
 //next I need to make a variable that will make a white box for the length of the string
@@ -87,26 +98,73 @@ $('#play').click(function(){
 	$('#play').fadeOut(function(){
 		var word = newRound.phrase.length
 		var wordArray = newRound.phrase.split('')
+		winningNumber=wordArray.length
 		$('#hint').append('<h2>' + newRound.category + '</h2>')
 		for(var i=0; i<wordArray.length; i++){
-			console.log(wordArray)
-			$('#phrase').append('<div class="box" id="' + wordArray[i] + '"></div>')
+			//console.log(wordArray)
+			$('#phrase').append('<div class="box ' + wordArray[i] + '"></div>')
 			if(wordArray[i].match(/\s/g)){
 				$('#phrase').append('<br class="break">');
 				var space = wordArray[i]
 				$('.break').prev().css('display','none')
-				console.log(wordArray[i])	
+				$('.break').prev().attr('class','done')
+				//console.log(wordArray[i])
+				winningNumber-=1
+				console.log(winningNumber)
 			}
 		}
+		startGame();
+	})
+})
+
+//Make a function that takes the id from the selected letter
+//Give it an id
+
+
+var winValue=0
+var winnings=0
+var letter = ''
+$(document).ready(function(){
+	$('span').click(function(){
+		letter = $(this).attr('id')
+		//console.log(letter)
+		if(newRound.phrase.match(letter)){
+			winValue += $('.' + letter).length
+			$('.' + letter).text(letter)
+			$('.' + letter).css('fontSize','50px').css('backgroundColor','transparent')
+			$('.' + letter).attr('class', letter + ' done box win')
+			//calculate number of letters found to add that times wheel value
+			var classNum = $('.' + letter).length
+			winnings = winnings + (spinValue.value*classNum)
+			console.log(winnings)
+			$('#amount').text('$'+winnings)
+			//gets rid of selected letter
+			$('#' + letter).html('<img src="letters/icons8-delete_sign.png"');
+				if(winValue==winningNumber){
+				//alert('Win')
+				$('#myModal').css('display','block')
+     			$('#blur').css('display','block')
+     			$('#modalHead').text('You\'ve Won $ '+ winnings )
+			}else{
+				return
+			}
+		}else if(!newRound.phrase.match(letter)){
+			$('#' + letter).html('<img src="letters/icons8-delete_sign.png"');
+			$('#spinTxt').text('Wrong Letter! Spin Again.')
+			startGame();
+		}	
 		
 	})
 })
 
 
-
-
-
-
-
+//function thats in charge of the actual gameplay
+//disable letters. only let player spin and then get that value
+function startGame(){
+	$('#lowerContent').css('display','none')
+	$('#spinStuff').css('display','block')
+	theWheel.rotationAngle=0
+	//now go back up to the spin on click event
+}
 
 
