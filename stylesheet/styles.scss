@@ -2,11 +2,11 @@
 
 body{
 	margin:0 auto;
-	background-color:#1047a0;
+	background: linear-gradient(#648ff4,#1f5def);
 }
 #topContent{
 	margin-top:0;
-	height:50vh;
+	height:60vh;
 }
 #gameBoard, .letters{
 	text-align:center;
@@ -18,7 +18,50 @@ img{
 	margin-bottom:30px;
 }
 h1{
+	text-align:center;
 	margin-top:0;
+	margin-bottom:0;
 }
-
-      
+#canvasContainer{
+	height:400px;
+	position:absolute;
+	right:0;
+	canvas{
+		margin-top:20px;
+		z-index: 1;
+		float:right;
+	}
+	#prize{
+		top:0;
+		position:absolute;
+		z-index:999;
+		left:45%;
+		width:50px;
+		height:50px;
+	}
+}
+#phrase{
+	float:left;
+}
+#spin, #play {
+  background: #3498db;
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+#spin:hover, #play:hover {
+  background: #3cb0fd;
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+.box{
+	width:50px;
+	height:50px;
+	background:#FFFFFF;
+	margin-left:20px;
+	display:inline-block;
+}

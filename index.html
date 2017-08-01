@@ -12,11 +12,23 @@
 				<h1>Rules:</h1>
 				<p>1:Spin the Wheel!</p>
 				<br><p>2:Guess a letter!</p>
+				<button type='button' id='spin'>Spin</button>
 			</div>
 			<div class='col-10' id='gameBoard'>
 				<h1>Wheel of Fortune</h1>
-				<br>
-				<button type='button' id='start'>Click to Play</button>
+				<div id='hint'>
+				</div>
+				<div id='phrase'>
+				</div>
+				<div id='phrase'>
+					<button type='button' id='play'>Click to Play</button>
+				</div>
+				<div id='canvasContainer'>
+					<canvas id='canvas' width='500' height='300'>
+					</canvas>
+					<img id='prize' src='letters/drop-down-arrow.png'>
+				</div>
+				
 			</div>
 			</div>
 	</container>
@@ -71,6 +83,8 @@
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+ <script type="text/javascript" src='Winwheel.js'></script>
  <script type="text/javascript" src='main.js'></script>
 </body>
 </html>
