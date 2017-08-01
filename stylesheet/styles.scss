@@ -65,3 +65,17 @@ h1{
 	margin-left:20px;
 	display:inline-block;
 }
+#hint{
+	text-align:center;
+	position:absolute;
+}
+#phrase{
+	margin-top:10%;
+	position:absolute;
+}
+#spinStuff{
+	display:none;
+	#spin{
+		margin-left:47%;
+	}
+}
