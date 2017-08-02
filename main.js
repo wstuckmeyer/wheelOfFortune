@@ -175,7 +175,7 @@ $(document).ready(function(){
 function startGame(){
 	$('#lowerContent').css('display','none')
 	$('#spinStuff').css('display','block')
-	$('#spinStuff').effect('bounce', {times:10}, 8000)
+	$('#spinStuff').effect('bounce', {times:10}, 2000)
 	theWheel.rotationAngle=0
 	//now go back up to the spin on click event
 }
