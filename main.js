@@ -53,6 +53,7 @@ $('#spin').click(function(){
 //gets the value of the segment the player spun
 var spinValue = ''
 function getPrize(){
+	//checks if the segment is bankrupt
 	spinValue=theWheel.getIndicatedSegment();
 	if(spinValue.value==0){
 		winnings = winnings*0;
@@ -60,6 +61,7 @@ function getPrize(){
 		startGame();
 		theWheel.rotationAngle=0
 	}else{
+	//otherwise it just gets the value of that piece
 	console.log(spinValue.value);
 	theWheel.rotationAngle=0
 	$('#playAmount').text('This guess is worth: $'+spinValue.text)
@@ -99,12 +101,14 @@ $('#play').click(function(){
 		$('#rules').css('display','inline')
 		var word = newRound.phrase.length
 		var wordArray = newRound.phrase.split('')
+		//sets the number of letters a player has to find to win
 		winningNumber=wordArray.length
 		$('#hint').append('<h2> Category is: ' + newRound.category + '</h2>')
 		for(var i=0; i<wordArray.length; i++){
 			//console.log(wordArray)
 			$('#phrase').append('<div class="box ' + wordArray[i] + '"></div>')
 			if(wordArray[i].match(/\s/g)){
+				//checks for a space and adds a break 
 				$('#phrase').append('<br class="break">');
 				var space = wordArray[i]
 				$('.break').prev().css('display','none')
@@ -155,6 +159,7 @@ $(document).ready(function(){
 			}else{
 				return
 			}
+		//remove letter if its been selected incorrectly
 		}else if(!newRound.phrase.match(letter)){
 			$('#' + letter).html('<img src="letters/icons8-delete_sign.png"');
 			$('#spinTxt').text('Wrong Letter! Spin Again.')
