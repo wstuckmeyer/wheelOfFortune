@@ -79,8 +79,8 @@ function rounds(){
 
 rounds.prototype=Object.create(game.prototype)
 var allGames = new rounds()
-var one = new game('AVACADO TOAST','Brunch');
-var two = new game('I LITERALLY CAN NOT', '"Can You?"');
+var one = new game('AVACADO TOAST','"Brunch"');
+var two = new game('PUMPKIN SPICE LATTE', '"Fall Favorite Drink"');
 var three = new game('GLUTEN FREE','"Vegan, Dairy Free, Non GMO, ..."')
 var phraseArray = []
 //add objects to an array
@@ -96,10 +96,11 @@ var newRound = allGames.rounds[Math.floor(Math.random()*allGames.rounds.length)]
 //next I need to make a variable that will make a white box for the length of the string
 $('#play').click(function(){
 	$('#play').fadeOut(function(){
+		$('#rules').css('display','inline')
 		var word = newRound.phrase.length
 		var wordArray = newRound.phrase.split('')
 		winningNumber=wordArray.length
-		$('#hint').append('<h2>' + newRound.category + '</h2>')
+		$('#hint').append('<h2> Category is: ' + newRound.category + '</h2>')
 		for(var i=0; i<wordArray.length; i++){
 			//console.log(wordArray)
 			$('#phrase').append('<div class="box ' + wordArray[i] + '"></div>')
@@ -125,13 +126,15 @@ var winValue=0
 var winnings=0
 var letter = ''
 $(document).ready(function(){
+	$('#lowerContent').css('display','none');
+	$('#play').effect('bounce', {times:3}, 1000);
 	$('span').click(function(){
 		letter = $(this).attr('id')
 		//console.log(letter)
 		if(newRound.phrase.match(letter)){
 			winValue += $('.' + letter).length
 			$('.' + letter).text(letter)
-			$('.' + letter).css('fontSize','50px').css('backgroundColor','transparent')
+			$('.' + letter).css('fontSize','50px').css('backgroundColor','transparent').css('boxShadow','none')
 			$('.' + letter).attr('class', letter + ' done box win')
 			//calculate number of letters found to add that times wheel value
 			var classNum = $('.' + letter).length
@@ -144,7 +147,11 @@ $(document).ready(function(){
 				//alert('Win')
 				$('#myModal').css('display','block')
      			$('#blur').css('display','block')
-     			$('#modalHead').text('You\'ve Won $ '+ winnings )
+     			$('#modalHead').html('<h1>You\'ve Won $ '+ winnings + '</h1><br><h4>Take That to the Bank</h4>')
+     			$('#again').effect('shake',3000)
+     			$('#again').click(function(){
+     				location.reload()
+     			})
 			}else{
 				return
 			}
@@ -163,6 +170,7 @@ $(document).ready(function(){
 function startGame(){
 	$('#lowerContent').css('display','none')
 	$('#spinStuff').css('display','block')
+	$('#spinStuff').effect('bounce', {times:10}, 8000)
 	theWheel.rotationAngle=0
 	//now go back up to the spin on click event
 }
