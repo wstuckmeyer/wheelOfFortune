@@ -1,0 +1,81 @@
+#topContent{
+	margin-top:0;
+	height:60vh;
+	#title{
+		text-align: center;
+		margin-right:20%;
+	}
+}
+#head{
+	margin-top:20%;
+}
+#gameBoard, .letters{
+	text-align:center;
+}
+img{
+	margin-bottom:30px;
+}
+h1{
+	text-align:center;
+	margin-top:0;
+	margin-bottom:0;
+}
+#canvasContainer{
+	height:400px;
+	position:absolute;
+	right:0;
+	canvas{
+		margin-top:20px;
+		z-index: 1;
+		float:right;
+	}
+	#prize{
+		top:0;
+		position:absolute;
+		z-index:15;
+		left:45%;
+		width:50px;
+		height:50px;
+	}
+}
+#play{
+	position:absolute;
+	margin-top:12%;
+	left:40%;
+}
+#spin, #play, #again {
+  background: #3498db;
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  border-radius: 28px;
+  width:300px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  box-shadow:0 0 20px black;
+}
+#spin:hover, #play:hover {
+  background: #3cb0fd;
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+.box{
+	width:50px;
+	height:50px;
+	background:#FFFFFF;
+	margin-left:20px;
+	display:inline-block;
+	box-shadow:0 0 40px black;
+	margin-bottom:20px;
+}
+#hint{
+	margin-left:3%;
+	position:absolute;
+	margin-bottom:2%;
+}
+#phrase{
+	float:left;
+	margin-top:7%;
+	position:absolute;
+}
